@@ -29,7 +29,8 @@ RSpec.configure do |config|
       timeout: 120,
       debug: false,
       phantomjs_options: ['--load-images=no', '--disk-cache=false'],
-      inspector: true
+      inspector: true,
+      phantomjs: Phantomjs.path
     }
     Capybara::Poltergeist::Driver.new(app, options)
   end

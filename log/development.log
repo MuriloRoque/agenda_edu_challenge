@@ -759,3 +759,443 @@ Processing by MessagesController#index as HTML
 Completed 200 OK in 85ms (Views: 70.2ms | ActiveRecord: 2.9ms)
 
 
+Started GET "/messages/new" for ::1 at 2020-08-02 09:28:55 -0300
+Processing by MessagesController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/new.html.slim within layouts/application
+  Rendered messages/new.html.slim within layouts/application (10.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (5.6ms)
+  Rendered layouts/_messages.html.slim (1.9ms)
+  Rendered layouts/_navbar.html.slim (2.8ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.0ms)
+Completed 200 OK in 112ms (Views: 100.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/messages/new" for ::1 at 2020-08-02 09:28:55 -0300
+Processing by MessagesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/new.html.slim within layouts/application
+  Rendered messages/new.html.slim within layouts/application (4.4ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (5.6ms)
+  Rendered layouts/_messages.html.slim (1.9ms)
+  Rendered layouts/_navbar.html.slim (2.6ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.1ms)
+Completed 200 OK in 53ms (Views: 50.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/messages/new" for ::1 at 2020-08-02 09:31:05 -0300
+Processing by MessagesController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/new.html.slim within layouts/application
+  Rendered messages/new.html.slim within layouts/application (8.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.1ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_navbar.html.slim (3.5ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.2ms)
+Completed 200 OK in 67ms (Views: 52.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/messages/sent" for ::1 at 2020-08-02 09:42:28 -0300
+Processing by MessagesController#sent as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/sent.html.slim within layouts/application
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["from", 1], ["status", 2]]
+  Rendered messages/sent.html.slim within layouts/application (6.2ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (7.7ms)
+  Rendered layouts/_messages.html.slim (2.4ms)
+  Rendered layouts/_navbar.html.slim (4.0ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.5ms)
+Completed 200 OK in 76ms (Views: 68.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/messages/new" for ::1 at 2020-08-02 09:42:29 -0300
+Processing by MessagesController#new as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/new.html.slim within layouts/application
+  Rendered messages/new.html.slim within layouts/application (12.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.7ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_navbar.html.slim (2.8ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.0ms)
+Completed 200 OK in 71ms (Views: 56.2ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/messages" for ::1 at 2020-08-02 09:42:42 -0300
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3VCy6sc/mgvselFsPHUcvOkw4+xghd9j3jpwxoXauPk3vUvhGxS9s5mwsnKJBwxxCiw4XDCh1cvxluwp8WweoA==", "message"=>{"receiver_email"=>"murilo@gmail.com", "title"=>"Assunto", "content"=>"Conteúdo"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "murilo@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Redirected to http://localhost:3000/messages/new
+Completed 302 Found in 11ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/messages/new" for ::1 at 2020-08-02 09:42:42 -0300
+Processing by MessagesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/new.html.slim within layouts/application
+  Rendered messages/new.html.slim within layouts/application (4.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (5.7ms)
+  Rendered layouts/_messages.html.slim (2.0ms)
+  Rendered layouts/_navbar.html.slim (13.8ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.5ms)
+Completed 200 OK in 58ms (Views: 53.6ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/messages" for ::1 at 2020-08-02 09:43:22 -0300
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"U0MbYqTwEI0ve+SfzJAH7XWhFdxbBHmIapdqYrJo/Xk9yd5txCO0SNVtxvqCO4UoqZlP0yzy0qCv7Ee+MpMipg==", "message"=>{"receiver_email"=>"master@email.com", "title"=>"Assunto", "content"=>"Conteúdo"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("title", "content", "from", "to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Assunto"], ["content", "Conteúdo"], ["from", 1], ["to", 1], ["created_at", "2020-08-02 12:43:22.419351"], ["updated_at", "2020-08-02 12:43:22.419351"]]
+  [1m[35m (214.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 228ms (ActiveRecord: 216.6ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-02 09:43:22 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 1], ["status", 2]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  Rendered messages/index.html.slim within layouts/application (19.4ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (5.9ms)
+  Rendered layouts/_messages.html.slim (2.0ms)
+  Rendered layouts/_navbar.html.slim (3.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.1ms)
+Completed 200 OK in 74ms (Views: 59.8ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/messages/1" for ::1 at 2020-08-02 09:43:29 -0300
+Processing by MessagesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "messages" SET "status" = $1, "visualized" = $2, "updated_at" = $3 WHERE "messages"."id" = $4[0m  [["status", 1], ["visualized", "2020-08-02 12:43:29.717672"], ["updated_at", "2020-08-02 12:43:29.717312"], ["id", 1]]
+  [1m[35m (52.8ms)[0m  [1m[35mCOMMIT[0m
+  Rendering messages/show.html.slim within layouts/application
+  Rendered messages/show.html.slim within layouts/application (12.7ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (5.8ms)
+  Rendered layouts/_messages.html.slim (2.5ms)
+  Rendered layouts/_navbar.html.slim (3.4ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.2ms)
+Completed 200 OK in 136ms (Views: 62.3ms | ActiveRecord: 56.0ms)
+
+
+Started GET "/messages/1" for ::1 at 2020-08-02 09:43:29 -0300
+Processing by MessagesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/show.html.slim within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered messages/show.html.slim within layouts/application (19.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.7ms)
+  Rendered layouts/_messages.html.slim (2.0ms)
+  Rendered layouts/_navbar.html.slim (2.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (3.3ms)
+Completed 200 OK in 71ms (Views: 62.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/messages/sent" for ::1 at 2020-08-02 09:43:33 -0300
+Processing by MessagesController#sent as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/sent.html.slim within layouts/application
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["from", 1], ["status", 2]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  Rendered messages/sent.html.slim within layouts/application (19.5ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.8ms)
+  Rendered layouts/_messages.html.slim (2.2ms)
+  Rendered layouts/_navbar.html.slim (2.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.1ms)
+Completed 200 OK in 76ms (Views: 62.1ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-02 09:43:35 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 1], ["status", 2]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  Rendered messages/index.html.slim within layouts/application (17.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.6ms)
+  Rendered layouts/_messages.html.slim (2.2ms)
+  Rendered layouts/_navbar.html.slim (3.0ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.3ms)
+Completed 200 OK in 92ms (Views: 77.9ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/messages/1" for ::1 at 2020-08-02 09:43:38 -0300
+Processing by MessagesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMessage Load (1.2ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/show.html.slim within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered messages/show.html.slim within layouts/application (8.4ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.4ms)
+  Rendered layouts/_messages.html.slim (2.4ms)
+  Rendered layouts/_navbar.html.slim (3.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.1ms)
+Completed 200 OK in 73ms (Views: 55.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/messages/1" for ::1 at 2020-08-02 09:43:38 -0300
+Processing by MessagesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/show.html.slim within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered messages/show.html.slim within layouts/application (5.4ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (17.1ms)
+  Rendered layouts/_messages.html.slim (2.5ms)
+  Rendered layouts/_navbar.html.slim (3.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.2ms)
+Completed 200 OK in 65ms (Views: 57.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-02 09:43:39 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 1], ["status", 2]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  Rendered messages/index.html.slim within layouts/application (12.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.6ms)
+  Rendered layouts/_messages.html.slim (2.4ms)
+  Rendered layouts/_navbar.html.slim (3.2ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.2ms)
+Completed 200 OK in 71ms (Views: 58.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/messages/sent" for ::1 at 2020-08-02 09:43:41 -0300
+Processing by MessagesController#sent as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/sent.html.slim within layouts/application
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["from", 1], ["status", 2]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  Rendered messages/sent.html.slim within layouts/application (21.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.4ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_navbar.html.slim (2.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (12.3ms)
+Completed 200 OK in 87ms (Views: 74.6ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/messages/1" for ::1 at 2020-08-02 09:43:43 -0300
+Processing by MessagesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMessage Load (0.8ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/show.html.slim within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered messages/show.html.slim within layouts/application (8.9ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.7ms)
+  Rendered layouts/_messages.html.slim (2.2ms)
+  Rendered layouts/_navbar.html.slim (3.2ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.4ms)
+Completed 200 OK in 71ms (Views: 56.6ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/messages/1" for ::1 at 2020-08-02 09:43:43 -0300
+Processing by MessagesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/show.html.slim within layouts/application
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered messages/show.html.slim within layouts/application (4.0ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (5.6ms)
+  Rendered layouts/_messages.html.slim (1.9ms)
+  Rendered layouts/_navbar.html.slim (3.4ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.0ms)
+Completed 200 OK in 48ms (Views: 42.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-02 09:43:46 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 1], ["status", 2]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  Rendered messages/index.html.slim within layouts/application (23.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (5.8ms)
+  Rendered layouts/_messages.html.slim (2.2ms)
+  Rendered layouts/_navbar.html.slim (3.5ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.3ms)
+Completed 200 OK in 94ms (Views: 77.9ms | ActiveRecord: 3.4ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2020-08-02 09:44:18 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"P3FWZcY48tdBI0t5Rr2dVXra/6Z3s2ajA3xTcE7Fr8pR+5NqputWErs1aRwIFh+QpuKlqQBFzYvGB36szj5wFQ=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 9ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-08-02 09:44:18 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (7.2ms)
+  Rendered layouts/_messages.html.slim (2.0ms)
+  Rendered layouts/_footer.html.slim (1.9ms)
+Completed 200 OK in 37ms (Views: 33.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-08-02 09:45:11 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Users::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/registrations/new.html.slim within layouts/login (550.1ms)
+  Rendered layouts/_messages.html.slim (51.1ms)
+Completed 500 Internal Server Error in 844ms (ActiveRecord: 3.4ms)
+
+
+
+NoMethodError - undefined method `flash' for #<ActionDispatch::Request:0x0000565278eb5cf0>:
+  app/views/layouts/_messages.html.slim:1:in `_app_views_layouts__messages_html_slim__2644788349633016845_70066907617020'
+  app/views/layouts/login.html.slim:21:in `_app_views_layouts_login_html_slim__2921990226035456814_47456109973000'
+
+Started POST "/__better_errors/817485c9df334dc4/variables" for ::1 at 2020-08-02 09:45:12 -0300
+Started GET "/" for ::1 at 2020-08-02 09:45:23 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (8.1ms)
+  Rendered layouts/_messages.html.slim (44.0ms)
+Completed 500 Internal Server Error in 74ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `flash' for #<ActionDispatch::Request:0x00007f737197a5e0>:
+  app/views/layouts/_messages.html.slim:1:in `_app_views_layouts__messages_html_slim__2644788349633016845_70066907067120'
+  app/views/layouts/login.html.slim:21:in `_app_views_layouts_login_html_slim__2921990226035456814_70066902083340'
+
+Started POST "/__better_errors/0b5a2f3c43e880c8/variables" for ::1 at 2020-08-02 09:45:23 -0300
+Started GET "/" for ::1 at 2020-08-02 09:47:20 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (530.8ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_footer.html.slim (2.0ms)
+Completed 200 OK in 755ms (Views: 734.8ms | ActiveRecord: 3.0ms)
+
+
