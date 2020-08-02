@@ -1,14 +1,13 @@
 require 'rails_helper'
 
 feature 'Check Messages' do
-
-  let(:user) { FactoryBot.create(:user)}
-  let(:user1) { FactoryBot.create(:user)}
-  let!(:message) { FactoryBot.create(:message,to: user.id,from: user1.id)}
-  let!(:message1) { FactoryBot.create(:message,to: user1.id,from: user.id)}
+  let(:user) { FactoryBot.create(:user) }
+  let(:user1) { FactoryBot.create(:user) }
+  let!(:message) { FactoryBot.create(:message, to: user.id, from: user1.id) }
+  let!(:message1) { FactoryBot.create(:message, to: user1.id, from: user.id) }
 
   before do
-    login_as(user, :scope => :user)
+    login_as(user, scope: :user)
   end
 
   scenario 'check received messages' do
@@ -28,5 +27,4 @@ feature 'Check Messages' do
     click_link message.title
     expect(page).to have_content message.content
   end
-
 end

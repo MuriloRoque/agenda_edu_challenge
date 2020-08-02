@@ -1,41 +1,39 @@
-.login_input{
+.login_input {
   margin-left: 15px;
 }
 
-
-.centralized_outer{
+.centralized_outer {
   position: relative;
   width: 100%;
 }
 
-.centralized_inner{
+.centralized_inner {
   left: 50%;
   position: absolute;
   transform: translateX(-50%);
 }
 
-.unread{
-  background-color: #FFFCF5;
+.unread {
+  background-color: #fffcf5;
   font-weight: bold;
 }
 
-.message_date{
+.message_date {
   float: right;
 }
 
-#login{
+#login {
   margin-top: 5em;
 }
 
-.clickable:hover{
+.clickable:hover {
   border-left: 2px solid;
 }
 
-.clickable_user:hover{
+.clickable_user:hover {
   border-left: 2px solid;
 }
 
-
-.red{
+.red {
   color: red;
 }

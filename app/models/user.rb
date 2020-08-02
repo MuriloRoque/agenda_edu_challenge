@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates_presence_of :name
 
-  enum permission: { normal: 0, master: 1}
+  enum permission: { normal: 0, master: 1 }
   before_create :create_token
 
   has_many :messages, foreign_key: 'to'
@@ -18,8 +18,8 @@ class User < ApplicationRecord
 
   protected
 
-  #callback to create api token when user is created
+  # callback to create api token when user is created
   def create_token
-    self.token = name.first(4).upcase + Time.now.strftime("%H:%M:%S").strip().to_s.gsub(/[^\d]/, "")
+    self.token = name.first(4).upcase + Time.now.strftime('%H:%M:%S').strip.to_s.gsub(/[^\d]/, '')
   end
 end

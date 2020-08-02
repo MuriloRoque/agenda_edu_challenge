@@ -1,17 +1,16 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/poltergeist'
 require 'support/factory_bot'
 
-include Warden::Test::Helpers
+include Warden::Test::Helpers # rubocop:disable Style/MixinUsage
 
 ActiveRecord::Migration.maintain_test_schema!
-
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -20,20 +19,19 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   Capybara.register_driver :poltergeist do |app|
     options = {
-      :js_errors => false,
-      :timeout => 120,
-      :debug => false,
-      :phantomjs_options => ['--load-images=no', '--disk-cache=false'],
-      :inspector => true,
+      js_errors: false,
+      timeout: 120,
+      debug: false,
+      phantomjs_options: ['--load-images=no', '--disk-cache=false'],
+      inspector: true
     }
-    Capybara::Poltergeist::Driver.new(app, options) #, debug: true, window_size: [1300, 1000]) #, debug: true, window_size: [1300, 1000])
+    Capybara::Poltergeist::Driver.new(app, options)
   end
 
   Capybara.javascript_driver = :poltergeist

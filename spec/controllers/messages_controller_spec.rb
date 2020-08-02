@@ -1,15 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe MessagesController, type: :controller do
-
-  let(:user) { FactoryBot.create(:user)}
-  let(:user1) { FactoryBot.create(:user)}
-  let(:master) { FactoryBot.create(:user,:master)}
-  let(:message) { FactoryBot.create(:message,to: user.id,from: user1.id)}
-  let(:message1) { FactoryBot.create(:message,to: user1.id,from: user.id)}
-  let(:read_message) { FactoryBot.create(:message,:read,to: user.id)}
-  let(:archived_message) { FactoryBot.create(:message,:archived,to: user.id)}
-  let(:archived_message1) { FactoryBot.create(:message,:archived,to: user1.id)}
+  let(:user) { FactoryBot.create(:user) }
+  let(:user1) { FactoryBot.create(:user) }
+  let(:master) { FactoryBot.create(:user, :master) }
+  let(:message) { FactoryBot.create(:message, to: user.id, from: user1.id) }
+  let(:message1) { FactoryBot.create(:message, to: user1.id, from: user.id) }
+  let(:read_message) { FactoryBot.create(:message, :read, to: user.id) }
+  let(:archived_message) { FactoryBot.create(:message, :archived, to: user.id) }
+  let(:archived_message1) { FactoryBot.create(:message, :archived, to: user1.id) }
 
   describe '#new' do
     before do
@@ -27,14 +26,13 @@ RSpec.describe MessagesController, type: :controller do
     end
   end
 
-
   describe '#create' do
     before do
       sign_in user
     end
 
     it 'create a message' do
-      expect {create_message}.to change(Message,:count).by(1)
+      expect { create_message }.to change(Message, :count).by(1)
     end
 
     it 'redirects to index on success' do
@@ -43,7 +41,7 @@ RSpec.describe MessagesController, type: :controller do
     end
 
     it 'not create a message' do
-      expect {create_invalid_message}.to_not change(Message,:count)
+      expect { create_invalid_message }.to_not change(Message, :count)
     end
 
     it 'redirects to new on error' do
@@ -69,7 +67,6 @@ RSpec.describe MessagesController, type: :controller do
         get :index
         expect(response).to render_template :index
       end
-
     end
 
     context 'when is master' do
@@ -84,11 +81,6 @@ RSpec.describe MessagesController, type: :controller do
         expect(assigns(:messages).size).to eq(2)
       end
     end
-
-
-
-
-
   end
 
   describe '#show' do
@@ -97,25 +89,24 @@ RSpec.describe MessagesController, type: :controller do
         sign_in user
       end
 
-
       it 'find the message' do
-        get :show , params: {id: message.id}
+        get :show, params: { id: message.id }
         expect(assigns(:message)).to eq(message)
       end
 
       it 'can be reached' do
-        get :show, params: {id: message.id}
+        get :show, params: { id: message.id }
         expect(response).to render_template :show
       end
 
       it 'update status to read' do
-        get :show , params: {id: message.id}
+        get :show, params: { id: message.id }
         message.reload
         expect(message.status).to eq 'read'
       end
 
       it 'update visualized date' do
-        get :show , params: {id: message.id}
+        get :show, params: { id: message.id }
         message.reload
         expect(message.visualized).to_not be_nil
       end
@@ -127,24 +118,22 @@ RSpec.describe MessagesController, type: :controller do
       end
 
       it 'find the message' do
-        get :show , params: {id: message.id}
+        get :show, params: { id: message.id }
         expect(assigns(:message)).to eq(message)
       end
 
       it 'does not update status to read' do
-        get :show , params: {id: message.id}
+        get :show, params: { id: message.id }
         message.reload
         expect(message.status).to eq 'unread'
       end
 
       it 'does not update visualized date' do
-        get :show , params: {id: message.id}
+        get :show, params: { id: message.id }
         message.reload
         expect(message.visualized).to be_nil
       end
-
     end
-
   end
 
   describe '#archive_multiple' do
@@ -153,7 +142,7 @@ RSpec.describe MessagesController, type: :controller do
     end
 
     it 'archives multiples messages' do
-      patch 'archive_multiple', params: {messages_ids: [message.id,read_message.id], format: :js}
+      patch 'archive_multiple', params: { messages_ids: [message.id, read_message.id], format: :js }
       expect(message.reload.archived?).to eq true
     end
   end
@@ -164,7 +153,7 @@ RSpec.describe MessagesController, type: :controller do
     end
 
     it 'archives one messages' do
-      patch 'archive', params: {title: message.title, format: :js}
+      patch 'archive', params: { title: message.title, format: :js }
       expect(message.reload.archived?).to eq true
     end
   end
@@ -200,10 +189,10 @@ end
 
 def create_message
   post :create, params:
-        {message: {title: 'Mensagem 1', content: 'Conteudo da mensagem', receiver_email: user1.email}}
+        { message: { title: 'Mensagem 1', content: 'Conteudo da mensagem', receiver_email: user1.email } }
 end
 
 def create_invalid_message
   post :create, params:
-        {message: {title: 'Mensagem 1', content: 'Conteudo da mensagem'}}
+        { message: { title: 'Mensagem 1', content: 'Conteudo da mensagem' } }
 end

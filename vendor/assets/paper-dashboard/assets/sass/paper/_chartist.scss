@@ -3,7 +3,7 @@
   position: relative;
   width: $width;
 
-  &:before {
+  &::before {
     display: block;
     float: left;
     content: "";
@@ -12,7 +12,7 @@
     padding-bottom: $ratio * 100%;
   }
 
-  &:after {
+  &::after {
     content: "";
     display: table;
     clear: both;
@@ -36,11 +36,15 @@
   -ms-flex-pack: $ct-text-justify;
   justify-content: $ct-text-justify;
   // Fallback to text-align for non-flex browsers
-  @if($ct-text-justify == 'flex-start') {
+  @if ($ct-text-justify == 'flex-start') {
     text-align: left;
-  } @else if ($ct-text-justify == 'flex-end') {
+  }
+
+  @else if ($ct-text-justify == 'flex-end') {
     text-align: right;
-  } @else {
+  }
+
+  @else {
     text-align: center;
   }
 }

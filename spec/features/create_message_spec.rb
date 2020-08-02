@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 feature 'Create Message' do
-
-  let(:user) { FactoryBot.create(:user)}
+  let(:user) { FactoryBot.create(:user) }
 
   before do
-    login_as(user, :scope => :user)
+    login_as(user, scope: :user)
   end
 
   scenario 'user creates a new message' do

@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :message do
-    title {Faker::Name.name}
+    title { Faker::Name.name }
     content 'Lorem ipsum'
-    from { FactoryBot.create(:user).id}
-    to { FactoryBot.create(:user).id}
+    from { FactoryBot.create(:user).id }
+    to { FactoryBot.create(:user).id }
 
     trait :no_from do
       from nil

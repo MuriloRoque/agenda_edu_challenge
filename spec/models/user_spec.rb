@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
-  let(:user) { FactoryBot.create(:user)}
+  let(:user) { FactoryBot.create(:user) }
 
   describe 'creation' do
     it 'is valid with valid atributes' do
@@ -15,7 +14,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'is invalid with invalid email' do
-      user = FactoryBot.build(:user,:invalid_email)
+      user = FactoryBot.build(:user, :invalid_email)
       expect(user).to_not be_valid
     end
 
@@ -24,15 +23,14 @@ RSpec.describe User, type: :model do
       user2.email = user.email
       expect(user2).to_not be_valid
     end
-
   end
 
   describe 'shoulda matchers' do
-    subject(:user) { FactoryBot.create(:user)}
+    subject(:user) { FactoryBot.create(:user) }
 
-    it { is_expected.to validate_presence_of(:name)}
-    it { is_expected.to validate_presence_of(:email)}
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:email) }
 
-    it { is_expected.to have_many(:messages)}
+    it { is_expected.to have_many(:messages) }
   end
 end

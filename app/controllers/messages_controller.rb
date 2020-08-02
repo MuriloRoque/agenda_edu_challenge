@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  load_and_authorize_resource #cancancan permissions
+  load_and_authorize_resource # cancancan permissions
   before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
   before_action :verify_author, only: [:show]
@@ -11,18 +11,18 @@ class MessagesController < ApplicationController
 
   # creates a new message
   def create
-    user = User.find_by_email(message_params[:receiver_email]) #find user by email instead of id
+    user = User.find_by_email(message_params[:receiver_email]) # find user by email instead of id
     @message = Message.new(message_params.merge(from: current_user.id)) # adds current_user id as sender of the message
     @message.to = user.id if user # if user is not found , message is rejected
 
     if @message.save
-      redirect_to messages_path , notice: 'Mensagem enviada com sucesso.'
+      redirect_to messages_path, notice: 'Mensagem enviada com sucesso.'
     else
-      redirect_to new_message_path, flash: {danger: 'Houve um erro'}
+      redirect_to new_message_path, flash: { danger: 'Houve um erro' }
     end
   end
 
-  #index checks if user has master permission
+  # index checks if user has master permission
   def index
     @messages = current_user.master? ? Message.master_messages.ordered : Message.sent_to(current_user).ordered
   end
@@ -30,12 +30,13 @@ class MessagesController < ApplicationController
   # shows content of the message
   def show
     @message = Message.find(params[:id])
-    if @message.unread? && current_user == @message.receiver #only set to read if current_user is the receiver of the message
-      @message.read!
-    end
+    return unless @message.unread? && current_user == @message.receiver
+
+    @message.read!
+    # only set to read if current_user is the receiver of the message
   end
 
-  #archive a single message by id
+  # archive a single message by id
   def archive
     @message = Message.find_by_title(params[:title])
     @message.archived!
@@ -48,9 +49,7 @@ class MessagesController < ApplicationController
   # achive multiples messages by sending multiple ids
   def archive_multiple
     messages = Message.find(params[:messages_ids])
-    messages.each do |message|
-      message.archived!
-    end
+    messages.each(&:archived!)
 
     respond_to do |format|
       format.js
@@ -80,7 +79,8 @@ class MessagesController < ApplicationController
 
   def verify_author
     message = Message.find(params[:id])
-    redirect_to messages_path unless ([message.receiver,message.sender].include?(current_user) && !message.archived?) || current_user.master?
-  end
+    return if ([message.receiver, message.sender].include?(current_user) && !message.archived?) || current_user.master?
 
+    redirect_to messages_path
+  end
 end
