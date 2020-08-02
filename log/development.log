@@ -1199,3 +1199,116 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 755ms (Views: 734.8ms | ActiveRecord: 3.0ms)
 
 
+Started GET "/profile" for ::1 at 2020-08-02 10:32:55 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/profile"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/users/sign_in" for ::1 at 2020-08-02 10:33:13 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GtgCRNh1OMXLmURrR/o8vrz1KqdLmPLlU5klCvyMv2LcExy/BhBEPo5DJrsWIuYX8yHSaKYo6tyf+Wst1CEeQA==", "user"=>{"email"=>"admin@email.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@email.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.8ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GtgCRNh1OMXLmURrR/o8vrz1KqdLmPLlU5klCvyMv2LcExy/BhBEPo5DJrsWIuYX8yHSaKYo6tyf+Wst1CEeQA==", "user"=>{"email"=>"admin@email.com", "password"=>"[FILTERED]"}}
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (5.0ms)
+  Rendered layouts/_messages.html.slim (2.0ms)
+  Rendered layouts/_footer.html.slim (1.9ms)
+Completed 200 OK in 166ms (Views: 51.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-08-02 10:33:31 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c3a/svJx1aSUoYX+jIoH6OJcqcFSJPiQyil+BCU3bO+1vaFJLBSpX9F75y7dUt1BrYhRDr+U4KkGSTAjDZrNzQ==", "user"=>{"email"=>"master@email.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 118ms (ActiveRecord: 0.5ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c3a/svJx1aSUoYX+jIoH6OJcqcFSJPiQyil+BCU3bO+1vaFJLBSpX9F75y7dUt1BrYhRDr+U4KkGSTAjDZrNzQ==", "user"=>{"email"=>"master@email.com", "password"=>"[FILTERED]"}}
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (4.4ms)
+  Rendered layouts/_messages.html.slim (1.7ms)
+  Rendered layouts/_footer.html.slim (2.0ms)
+Completed 200 OK in 134ms (Views: 28.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-08-02 10:33:35 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mmrr/sMItUyEHQGvbYCdx/AqyNm1lIkZL3qp31A92cNcofUFHW3Jt8HHY388WEduv/4wFlgkkSDjGuf4eJB44Q==", "user"=>{"email"=>"master@email.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["current_sign_in_at", "2020-08-02 13:33:35.118707"], ["sign_in_count", 2], ["updated_at", "2020-08-02 13:33:35.119789"], ["id", 1]]
+  [1m[35m (161.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 286ms (ActiveRecord: 162.9ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-02 10:33:35 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.9ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 1], ["status", 2]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  Rendered messages/index.html.slim within layouts/application (23.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (11.0ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_navbar.html.slim (2.7ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (14.4ms)
+Completed 200 OK in 101ms (Views: 74.4ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/users/1/edit" for ::1 at 2020-08-02 10:33:42 -0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/edit.html.slim within layouts/application
+  Rendered users/edit.html.slim within layouts/application (10.8ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (7.2ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_navbar.html.slim (2.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.0ms)
+Completed 200 OK in 66ms (Views: 53.1ms | ActiveRecord: 2.4ms)
+
+
