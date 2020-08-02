@@ -1,0 +1,28 @@
+- flash.each do |name, msg|
+  - if msg.is_a?(String) && !msg.blank?
+      - if name.to_s == 'notice'
+        javascript:
+          $.notify({
+            // options
+            message: "#{msg}"
+          },{
+            // settings
+            type: 'success',
+            placement: {
+             from: 'top',
+             align: 'center'
+            }
+          });
+      - else
+        javascript:
+          $.notify({
+            // options
+            message: "#{msg}"
+          },{
+            // settings
+            type: 'danger',
+            placement: {
+             from: 'top',
+             align: 'center'
+            }
+          });

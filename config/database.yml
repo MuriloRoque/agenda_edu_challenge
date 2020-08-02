@@ -1,0 +1,20 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: agenda_mail_development
+
+test:
+  <<: *default
+  database: agenda_mail_test
+production:
+  <<: *default
+  database: agenda_mail_production
+  username: agenda_mail
+  password: <%= ENV['AGENDA_MAIL_DATABASE_PASSWORD'] %>

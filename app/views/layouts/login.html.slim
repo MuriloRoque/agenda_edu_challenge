@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" /
+    meta content="width=device-width" name="viewport" /
+    meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+    title AgendaMail
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+    = stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
+    = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Muli:400,300"
+
+
+
+  body
+    .wrapper
+        .main-panel style='width:100%;'
+            = render 'layouts/messages'
+            = yield
+            = render 'layouts/footer'

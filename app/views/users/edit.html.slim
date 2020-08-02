@@ -1,0 +1,44 @@
+.container-fluid
+  .row
+    .col-lg-5.col-lg-offset-3.col-md-7.col-md-offset-4
+      .card
+        .header
+          h4.title AgendaMail
+          p.category Edite seu perfil.
+        .content.table-responsive.table-full-width
+          = form_for @user do |f|
+            .row
+              .col-md-11
+                .form-group.login_input
+                  = f.label 'Nome'
+                  = f.text_field :name, class: 'form-control border-input', placeholder: 'Nome'
+            .row
+              .col-md-11
+                .form-group.login_input
+                  = f.label :email
+                  = f.text_field :email, class: 'form-control border-input', placeholder: 'Email'
+            .row
+              .col-md-11
+                .form-group.login_input
+                  = f.label 'Senha'
+                  - if @minimum_password_length
+                    em
+                      | (minímo de #{@minimum_password_length} caracteres)
+                  br/
+                  = f.password_field :password, class: 'form-control border-input', placeholder: 'Senha'
+
+            .row
+              .col-md-11
+                .form-group.login_input
+                  = f.label 'Confirmação de senha'
+                  = f.password_field :password_confirmation, class: 'form-control border-input', placeholder: 'Senha'
+
+            .text-center
+              button.btn.btn-info.btn-fill.btn-wd type="submit"  Editar Perfil
+    - unless current_user.master?
+      .col-lg-3.col-md-3
+        .card
+          .header
+            h4.title Token Para API
+            span#see_token Ver
+            p.category#token style="display:none;" #{current_user.try(:token)}

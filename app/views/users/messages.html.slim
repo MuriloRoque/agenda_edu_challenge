@@ -1,0 +1,38 @@
+.container-fluid
+  .row
+    .col-lg-6.col-md-6
+      .card
+        .header
+          h4.title Recebidas
+        .content.table-responsive.table-full-width
+          table.table
+            thead
+              th
+              th
+              th
+            tbody
+              - @received.each do |message|
+                tr.clickable class="#{'unread' if message.unread?}"
+                  td #{message.sender_name}
+                  td.message_content
+                    = link_to message.title, message_path(message), class: 'view_message'
+                  td #{message_date(message)}
+
+    .col-lg-6.col-md-6
+      .card
+        .header
+          h4.title Enviadas
+        .content.table-responsive.table-full-width
+          table.table
+            thead
+              th
+              th
+              th
+            tbody
+              - @sent.each do |message|
+                tr.clickable class="#{'unread' if message.unread?}"
+                  td #{message.sender_name}
+                  td.message_content
+                    = link_to message.title, message_path(message), class: 'view_message'
+                  td #{message_date(message)}
+

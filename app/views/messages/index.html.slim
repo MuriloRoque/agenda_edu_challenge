@@ -1,0 +1,30 @@
+.container-fluid
+  .row
+    .col-md-12
+      .card
+        = form_tag archive_multiple_path, method: :patch, remote: true do
+          .header
+            h4.title Caixa de Entrada
+            span.message_date
+              = button_tag(type: 'submit', class: 'btn btn-default') do
+                span Excluir Selecionadas
+                i.fa.fa-2x.fa-trash
+          .content.table-responsive.table-full-width
+            table.table
+              thead
+                th
+                th
+                th
+                th
+                th
+              tbody
+                - @messages.each do |message|
+                  tr.clickable class="#{'unread' if message.unread?}"
+                    td.not_clickable #{check_box_tag 'messages_ids[]',message.id, false, class: 'messages_ids not_clickable'}
+                    td #{message.sender_name}
+                    td.message_content
+                      = link_to message.title, message_path(message), class: 'view_message'
+                    td #{message_date(message)}
+                    td.not_clickable
+                      = button_tag(type: 'button',class: 'btn btn-default btn-xs single_archive not_clickable',id: 'delete_message') do
+                        i.fa.fa-2x.fa-trash.not_clickable

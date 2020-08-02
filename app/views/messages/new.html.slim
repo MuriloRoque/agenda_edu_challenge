@@ -1,0 +1,29 @@
+.container-fluid
+  .row
+    .col-lg-10.col-lg-offset-1.col-md-7.col-md-offset-4
+      .card
+        .header
+          h4.title AgendaMail
+          p.category Escreva a mensagem.
+        .content.table-responsive.table-full-width
+          = form_for @message do |f|
+            .row
+              .col-md-11
+                .form-group.login_input
+                  = f.label 'Para:'
+                  = f.text_field :receiver_email, class: 'form-control border-input', placeholder: 'Email', required: true
+            .row
+              .col-md-11
+                .form-group.login_input
+                  = f.label 'Assunto'
+                  = f.text_field :title, class: 'form-control border-input', placeholder: 'Assunto', required: true
+            .row
+              .col-md-11
+                .form-group.login_input
+                  = f.label 'Conteúdo'
+                  = f.text_area :content, class: 'form-control border-input', required: true
+
+
+            .text-center
+              button.btn.btn-info.btn-fill.btn-wd type="submit"  Enviar
+

@@ -1,0 +1,16 @@
+.container-fluid
+  .row
+    .col-md-12
+      .card
+        .header
+          h4.title Caixa de Entrada
+        .content.table-responsive.table-full-width
+          table.table
+            thead
+              th
+              th
+            tbody
+              - @users.each do |user|
+                tr.clickable_user data-href="#{messages_user_path(user)}"
+                  td #{link_to user.name, messages_user_path(user)}
+                  td #{user.email}
