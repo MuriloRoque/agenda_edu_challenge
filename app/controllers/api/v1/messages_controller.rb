@@ -9,5 +9,15 @@ module Api::V1
       end
     end
 
+    def show
+      message = Message.find(params[:id])
+      if @current_user.permission == 'master'
+        render json: message
+      else
+        return unless @current_user == message.receiver
+        render json: message
+      end
+    end
+
   end
 end

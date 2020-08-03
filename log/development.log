@@ -2874,3 +2874,203 @@ Filter chain halted as :authenticate rendered or redirected
 Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 06:38:29 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI123456"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+Completed 200 OK in 19ms (Views: 0.6ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/messages/new" for ::1 at 2020-08-03 06:38:34 -0300
+Processing by MessagesController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering messages/new.html.slim within layouts/application
+  Rendered messages/new.html.slim within layouts/application (6.2ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.8ms)
+  Rendered layouts/_messages.html.slim (2.2ms)
+  Rendered layouts/_navbar.html.slim (2.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.2ms)
+Completed 200 OK in 90ms (Views: 60.8ms | ActiveRecord: 4.2ms)
+
+
+Started POST "/messages" for ::1 at 2020-08-03 06:38:42 -0300
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Gku8t+D81JyLeaROgrn4JiWkN2JCWsnwMfCy9XW3qjTzm+GLthIrUc4NpZhOoFVIZ02uRaWB6Dz05m7pzemP+A==", "message"=>{"receiver_email"=>"master@email.com", "title"=>"Assunto", "content"=>"Conteúdo"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("title", "content", "from", "to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Assunto"], ["content", "Conteúdo"], ["from", 2], ["to", 1], ["created_at", "2020-08-03 09:38:42.854126"], ["updated_at", "2020-08-03 09:38:42.854126"]]
+  [1m[35m (559.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 585ms (ActiveRecord: 562.5ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 06:38:43 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 2], ["status", 2]]
+  Rendered messages/index.html.slim within layouts/application (13.9ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (7.0ms)
+  Rendered layouts/_messages.html.slim (2.3ms)
+  Rendered layouts/_navbar.html.slim (3.2ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.2ms)
+Completed 200 OK in 75ms (Views: 61.8ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/messages/new" for ::1 at 2020-08-03 06:38:44 -0300
+Processing by MessagesController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering messages/new.html.slim within layouts/application
+  Rendered messages/new.html.slim within layouts/application (8.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (5.8ms)
+  Rendered layouts/_messages.html.slim (15.2ms)
+  Rendered layouts/_navbar.html.slim (3.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.4ms)
+Completed 200 OK in 75ms (Views: 67.3ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/messages" for ::1 at 2020-08-03 06:38:57 -0300
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"e1WZuvfyNqglwmZGKrWMIAo+JHIJySgm/hOsaB7z9kCShcSGoRzJZWC2Z5DmrCFOSNe9Ve4SCeo7BXB0pq3TjA==", "message"=>{"receiver_email"=>"murilo@gmail.com", "title"=>"123456", "content"=>"123456\r\n"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "murilo@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("title", "content", "from", "to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "123456"], ["content", "123456\r\n"], ["from", 2], ["to", 2], ["created_at", "2020-08-03 09:38:57.354244"], ["updated_at", "2020-08-03 09:38:57.354244"]]
+  [1m[35m (273.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 293ms (ActiveRecord: 276.4ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 06:38:57 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 2], ["status", 2]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2[0m
+  Rendered messages/index.html.slim within layouts/application (22.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (5.8ms)
+  Rendered layouts/_messages.html.slim (2.0ms)
+  Rendered layouts/_navbar.html.slim (3.1ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.2ms)
+Completed 200 OK in 75ms (Views: 62.4ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/v1/message/1" for 127.0.0.1 at 2020-08-03 06:39:11 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/message/1"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/api/v1/messages/1" for 127.0.0.1 at 2020-08-03 06:39:52 -0300
+Processing by Api::V1::MessagesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI123456"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 7ms (Views: 0.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/messages/2" for 127.0.0.1 at 2020-08-03 06:40:19 -0300
+Processing by Api::V1::MessagesController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI123456"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.8ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 8ms (Views: 1.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/2/edit" for ::1 at 2020-08-03 06:40:23 -0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/edit.html.slim within layouts/application
+  Rendered users/edit.html.slim within layouts/application (11.3ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (23.2ms)
+  Rendered layouts/_messages.html.slim (3.0ms)
+  Rendered layouts/_navbar.html.slim (3.7ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (3.0ms)
+Completed 200 OK in 90ms (Views: 76.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/v1/messages/2" for 127.0.0.1 at 2020-08-03 06:40:32 -0300
+Processing by Api::V1::MessagesController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "MURI061047"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.9ms)
+
+
+
+NoMethodError - undefined method `receiver' for nil:NilClass:
+  app/controllers/api/v1/messages_controller.rb:17:in `show'
+
+Started GET "/api/v1/messages/2" for 127.0.0.1 at 2020-08-03 06:40:51 -0300
+Processing by Api::V1::MessagesController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "MURI061047"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 27ms (Views: 0.4ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/api/v1/messages/1" for 127.0.0.1 at 2020-08-03 06:40:57 -0300
+Processing by Api::V1::MessagesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "MURI061047"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+No template found for Api::V1::MessagesController#show, rendering head :no_content
+Completed 204 No Content in 40ms (ActiveRecord: 1.7ms)
+
+
