@@ -20,8 +20,6 @@ class User < ApplicationRecord
 
   # callback to create api token when user is created
   def create_token
-    if !self.token
-      self.token = name.first(4).upcase + Time.now.strftime('%H:%M:%S').strip.to_s.gsub(/[^\d]/, '')
-    end
+    self.token = name.first(4).upcase + Time.now.strftime('%H:%M:%S').strip.to_s.gsub(/[^\d]/, '') unless token
   end
 end

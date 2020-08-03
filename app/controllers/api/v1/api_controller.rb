@@ -11,13 +11,13 @@ module Api::V1
     end
 
     def authenticate_token
-      authenticate_with_http_token do |token, options|
+      authenticate_with_http_token do |token, _options|
         @current_user = User.find_by(token: token)
       end
     end
 
-    def render_unauthorized(realm = "Application")
-      self.headers["WWW-Authenticate"] = %(Token realm="#{realm}")
+    def render_unauthorized(realm = 'Application')
+      headers['WWW-Authenticate'] = %(Token realm="#{realm}")
       render json: 'Bad credentials', status: :unauthorized
     end
   end

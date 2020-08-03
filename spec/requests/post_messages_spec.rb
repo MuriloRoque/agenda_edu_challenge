@@ -1,7 +1,9 @@
 # require 'rails_helper'
 # describe "post a message route", :type => :request do
 # before do
-#     post '/api/v1/messages', params: { :message => { :receiver_email => 'master@email.com', :title => 'Title', :content => 'Content'} }
+#     post '/api/v1/messages', params: { :message => { :receiver_email => 'master@email.com',
+#                                                      :title => 'Title',
+#                                                      :content => 'Content'} }
 #   end
 # it 'returns the message\'s receiver e-mail' do
 #     expect(JSON.parse(response.body)['message']['receiver_email']).to eq('master@email.com')
