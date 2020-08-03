@@ -16,6 +16,10 @@ class User < ApplicationRecord
     Message.sent_from(self)
   end
 
+  before_create do |user|
+    user.token = user.create_token
+  end
+
   protected
 
   # callback to create api token when user is created
