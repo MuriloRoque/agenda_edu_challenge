@@ -3283,3 +3283,9 @@ Processing by Api::V1::MessagesController#create as */*
 Completed 200 OK in 83ms (Views: 0.7ms | ActiveRecord: 58.3ms)
 
 
+Started GET "/api/v1/profile" for 127.0.0.1 at 2020-08-03 14:10:11 -0300
+Processing by Api::V1::UsersController#profile as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI123456"], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 0.5ms | ActiveRecord: 3.3ms)
+
+
