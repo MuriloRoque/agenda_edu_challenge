@@ -136,6 +136,8 @@ GEM
     public_suffix (3.0.1)
     puma (3.12.6)
     rack (2.2.3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.1.4)
@@ -282,6 +284,7 @@ DEPENDENCIES
   poltergeist
   pry
   puma (~> 3.7)
+  rack-cors
   rails (~> 5.1.2)
   rails-controller-testing
   rspec-rails (~> 3.5)

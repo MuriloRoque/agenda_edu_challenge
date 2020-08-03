@@ -17,5 +17,12 @@ module AgendaMail
     config.i18n.available_locales = [:en, "pt-BR"]
     config.encoding = "utf-8"
     config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
+
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :patch, :options]
+      end
+    end
   end
 end
