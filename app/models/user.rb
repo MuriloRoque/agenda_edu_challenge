@@ -16,14 +16,12 @@ class User < ApplicationRecord
     Message.sent_from(self)
   end
 
-  before_create do |user|
-    user.token = user.create_token
-  end
-
   protected
 
   # callback to create api token when user is created
   def create_token
-    self.token = name.first(4).upcase + Time.now.strftime('%H:%M:%S').strip.to_s.gsub(/[^\d]/, '')
+    if !self.token
+      self.token = name.first(4).upcase + Time.now.strftime('%H:%M:%S').strip.to_s.gsub(/[^\d]/, '')
+    end
   end
 end

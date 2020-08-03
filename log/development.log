@@ -1503,3 +1503,1374 @@ Processing by UsersController#edit as HTML
 Completed 200 OK in 76ms (Views: 58.9ms | ActiveRecord: 3.5ms)
 
 
+Started GET "/messages" for 127.0.0.1 at 2020-08-03 05:39:41 -0300
+Processing by MessagesController#index as */*
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `master?' for nil:NilClass:
+  app/models/ability.rb:5:in `initialize'
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:41:35 -0300
+Processing by Api::V1::MessagesController#index as */*
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:42:51 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+Completed 200 OK in 6ms (Views: 1.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 05:42:59 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 1], ["status", 2]]
+  Rendered messages/index.html.slim within layouts/application (6.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.5ms)
+  Rendered layouts/_messages.html.slim (2.0ms)
+  Rendered layouts/_navbar.html.slim (2.7ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.0ms)
+Completed 200 OK in 70ms (Views: 43.0ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/messages/new" for ::1 at 2020-08-03 05:43:00 -0300
+Processing by MessagesController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/new.html.slim within layouts/application
+  Rendered messages/new.html.slim within layouts/application (23.4ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (5.7ms)
+  Rendered layouts/_messages.html.slim (2.0ms)
+  Rendered layouts/_navbar.html.slim (2.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (1.9ms)
+Completed 200 OK in 85ms (Views: 63.3ms | ActiveRecord: 4.8ms)
+
+
+Started POST "/messages" for ::1 at 2020-08-03 05:43:08 -0300
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"S3+MkNQlt56P6A2miafLOreMFNSca27eBixjDAki9JyYh82/yqH1/vC+gcpk7nRNptEdF68djakWEEubGJ0iqQ==", "message"=>{"receiver_email"=>"master@email.com", "title"=>"Assunto", "content"=>"Conteúdo"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "messages" ("title", "content", "from", "to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Assunto"], ["content", "Conteúdo"], ["from", 1], ["to", 1], ["created_at", "2020-08-03 08:43:08.164186"], ["updated_at", "2020-08-03 08:43:08.164186"]]
+  [1m[35m (221.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 340ms (ActiveRecord: 225.5ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 05:43:08 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.8ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 1], ["status", 2]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1[0m
+  Rendered messages/index.html.slim within layouts/application (22.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 1], ["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.0ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_navbar.html.slim (3.2ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 1], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.1ms)
+Completed 200 OK in 83ms (Views: 70.4ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:43:12 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mMessage Load (0.8ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:43:33 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:43:45 -0300
+Processing by Api::V1::MessagesController#index as */*
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:43:50 -0300
+Processing by Api::V1::MessagesController#index as */*
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:44:36 -0300
+Processing by Api::V1::MessagesController#index as */*
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:44:43 -0300
+Processing by Api::V1::MessagesController#index as */*
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:45:48 -0300
+Processing by Api::V1::MessagesController#index as */*
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:46:35 -0300
+Processing by Api::V1::MessagesController#index as */*
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:48:42 -0300
+Processing by Api::V1::MessagesController#index as */*
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:49:01 -0300
+Processing by Api::V1::MessagesController#index as */*
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ArgumentError - wrong number of arguments (given 0, expected 1):
+  app/controllers/api/v1/api_controller.rb:19:in `render_unauthorized'
+  app/controllers/api/v1/api_controller.rb:10:in `authenticate'
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:52:28 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI052952"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+Completed 200 OK in 25ms (Views: 6.6ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:52:35 -0300
+Processing by Api::V1::MessagesController#index as */*
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:52:38 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI052952"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2020-08-03 05:53:12 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"h0gsix3I81Cvz5c4dlWKErZxyKf155IDgfpPSotNtx4LT87aeRcnHQAxU8m/yc8YKAsRTt71iighGFbyDSWa4w=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 50ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-08-03 05:53:12 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (10.4ms)
+  Rendered layouts/_messages.html.slim (2.6ms)
+  Rendered layouts/_footer.html.slim (2.7ms)
+Completed 200 OK in 71ms (Views: 68.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-08-03 05:53:15 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zZXLr9+29+twqn1qw/tHtEgN+TV6jAqQvAWu/rSGtGWn8nwIejeubmgWsZ/IlAEUK3A0ZcgmYefMXxBf9Xob8w==", "user"=>{"email"=>"muriloexample2@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "muriloexample2@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 6ms (ActiveRecord: 1.0ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zZXLr9+29+twqn1qw/tHtEgN+TV6jAqQvAWu/rSGtGWn8nwIejeubmgWsZ/IlAEUK3A0ZcgmYefMXxBf9Xob8w==", "user"=>{"email"=>"muriloexample2@gmail.com", "password"=>"[FILTERED]"}}
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.6ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (4.5ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_footer.html.slim (2.0ms)
+Completed 200 OK in 148ms (Views: 26.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-08-03 05:53:18 -0300
+Processing by Users::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.slim within layouts/login (15.5ms)
+  Rendered layouts/_messages.html.slim (2.9ms)
+  Rendered layouts/_footer.html.slim (2.3ms)
+Completed 200 OK in 50ms (Views: 48.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2020-08-03 05:53:28 -0300
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OUbr7f1xd4rzku7O/2aXWuTYKkBvsWfO80+Qs2uq4l8lYbIl12kKrS478F+ALxi72GysZWAe2l19bSs8xC6ytw==", "user"=>{"name"=>"Murilo", "email"=>"murilo@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "murilo@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "murilo@gmail.com"], ["encrypted_password", "$2a$11$A.ly.XPrHfEsXl7UiHGlLeIXWJf6iTqJMVFqStcNX.B/qiZ6cUMk2"], ["name", "Murilo"], ["created_at", "2020-08-03 08:53:28.697805"], ["updated_at", "2020-08-03 08:53:28.697805"], ["token", "MURI055328"]]
+  [1m[35m (162.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2020-08-03 08:53:28.872231"], ["last_sign_in_at", "2020-08-03 08:53:28.872231"], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["updated_at", "2020-08-03 08:53:28.874056"], ["id", 2]]
+  [1m[35m (39.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 355ms (ActiveRecord: 204.1ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 05:53:28 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 2], ["status", 2]]
+  Rendered messages/index.html.slim within layouts/application (7.8ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (7.3ms)
+  Rendered layouts/_messages.html.slim (2.4ms)
+  Rendered layouts/_navbar.html.slim (3.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.2ms)
+Completed 200 OK in 67ms (Views: 53.8ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/messages/new" for ::1 at 2020-08-03 05:53:35 -0300
+Processing by MessagesController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering messages/new.html.slim within layouts/application
+  Rendered messages/new.html.slim within layouts/application (9.4ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (7.8ms)
+  Rendered layouts/_messages.html.slim (2.6ms)
+  Rendered layouts/_navbar.html.slim (3.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (13.3ms)
+Completed 200 OK in 77ms (Views: 66.6ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/messages" for ::1 at 2020-08-03 05:53:49 -0300
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1kz5aA5XuaU7q3snilBwW3lKbwD/3PvvFYBDLCaDpNvxarqDYB0eNHgGLh48zz8qx1QuEjT8Z805J4DojZuhDQ==", "message"=>{"receiver_email"=>"murilo@gmail.com", "title"=>"Assunto", "content"=>"Conteúdo\r\n"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "murilo@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("title", "content", "from", "to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Assunto"], ["content", "Conteúdo\r\n"], ["from", 2], ["to", 2], ["created_at", "2020-08-03 08:53:49.820286"], ["updated_at", "2020-08-03 08:53:49.820286"]]
+  [1m[35m (182.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 202ms (ActiveRecord: 184.6ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 05:53:50 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 2], ["status", 2]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2[0m
+  Rendered messages/index.html.slim within layouts/application (16.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.0ms)
+  Rendered layouts/_messages.html.slim (2.0ms)
+  Rendered layouts/_navbar.html.slim (2.7ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.5ms)
+Completed 200 OK in 72ms (Views: 58.5ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:53:56 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI052952"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+Completed 200 OK in 8ms (Views: 3.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/2/edit" for ::1 at 2020-08-03 05:54:07 -0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/edit.html.slim within layouts/application
+  Rendered users/edit.html.slim within layouts/application (13.0ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (17.6ms)
+  Rendered layouts/_messages.html.slim (3.5ms)
+  Rendered layouts/_navbar.html.slim (3.7ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.4ms)
+Completed 200 OK in 88ms (Views: 72.2ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:54:17 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "MURI055328"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:54:40 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI052952"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:54:45 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "MURI055328"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+Completed 200 OK in 8ms (Views: 3.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:59:05 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "MURI055328"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY created_at DESC[0m
+Completed 200 OK in 24ms (Views: 6.5ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:59:09 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI052952"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY created_at DESC[0m
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:59:21 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "MURI055328"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY created_at DESC[0m
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:59:32 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI052952"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY created_at DESC[0m
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 05:59:41 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "MURI055328"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY created_at DESC[0m
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.6ms)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (5011.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "agenda_mail_development"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (655.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "agenda_mail_development"[0m
+  [1m[35m (1044.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "agenda_mail_test"[0m
+  [1m[35m (2890.4ms)[0m  [1m[35mCREATE DATABASE "agenda_mail_development" ENCODING = 'unicode'[0m
+  [1m[35m (1693.0ms)[0m  [1m[35mCREATE DATABASE "agenda_mail_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages" CASCADE[0m
+  [1m[35m (436.8ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "title" character varying NOT NULL, "content" text NOT NULL, "from" integer NOT NULL, "to" integer NOT NULL, "visualized" timestamp, "status" integer DEFAULT 0 NOT NULL, "archived" timestamp, "response" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (516.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "permission" integer DEFAULT 0, "token" character varying)[0m
+  [1m[35m (240.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (244.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (517.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (30.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171217223300)[0m
+  [1m[35m (24.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20171214205408),
+(20171215174246),
+(20171217044233);
+
+[0m
+  [1m[35m (517.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-03 09:02:06.313326"], ["updated_at", "2020-08-03 09:02:06.313326"]]
+  [1m[35m (30.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages" CASCADE[0m
+  [1m[35m (623.3ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "title" character varying NOT NULL, "content" text NOT NULL, "from" integer NOT NULL, "to" integer NOT NULL, "visualized" timestamp, "status" integer DEFAULT 0 NOT NULL, "archived" timestamp, "response" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (183.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "permission" integer DEFAULT 0, "token" character varying)[0m
+  [1m[35m (252.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (253.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (551.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (30.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171217223300)[0m
+  [1m[35m (24.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20171214205408),
+(20171215174246),
+(20171217044233);
+
+[0m
+  [1m[35m (290.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-03 09:02:08.656130"], ["updated_at", "2020-08-03 09:02:08.656130"]]
+  [1m[35m (24.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "created_at", "updated_at", "permission", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "master@email.com"], ["encrypted_password", "$2a$11$vSc4F1fmN/3i4SNS5mGSH.7p72tZHy12jWzE0iiT90jyGrBslY71a"], ["name", "Admin"], ["created_at", "2020-08-03 09:02:08.838926"], ["updated_at", "2020-08-03 09:02:08.838926"], ["permission", 1], ["token", "ADMI060208"]]
+  [1m[35m (36.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (54.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages" CASCADE[0m
+  [1m[35m (551.7ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "title" character varying NOT NULL, "content" text NOT NULL, "from" integer NOT NULL, "to" integer NOT NULL, "visualized" timestamp, "status" integer DEFAULT 0 NOT NULL, "archived" timestamp, "response" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (35.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (174.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "permission" integer DEFAULT 0, "token" character varying)[0m
+  [1m[35m (118.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (131.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (41.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages" CASCADE[0m
+  [1m[35m (644.2ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "title" character varying NOT NULL, "content" text NOT NULL, "from" integer NOT NULL, "to" integer NOT NULL, "visualized" timestamp, "status" integer DEFAULT 0 NOT NULL, "archived" timestamp, "response" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (35.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (506.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "permission" integer DEFAULT 0, "token" character varying)[0m
+  [1m[35m (267.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (257.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "created_at", "updated_at", "permission", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "master@email.com"], ["encrypted_password", "$2a$11$H.3ewrCQ6mUZzcSCUhYJju9R5BU.5SUSgxPh8iu.2xA5OLtYH/rB."], ["name", "Admin"], ["created_at", "2020-08-03 09:02:20.037413"], ["updated_at", "2020-08-03 09:02:20.037413"], ["permission", 1], ["token", "ADMI060220"]]
+  [1m[35m (49.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2020-08-03 06:02:39 -0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (584.4ms)
+  Rendered layouts/_messages.html.slim (1.9ms)
+  Rendered layouts/_footer.html.slim (1.8ms)
+Completed 200 OK in 831ms (Views: 802.4ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-08-03 06:02:44 -0300
+Processing by Users::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/registrations/new.html.slim within layouts/login (12.9ms)
+  Rendered layouts/_messages.html.slim (2.7ms)
+  Rendered layouts/_footer.html.slim (2.5ms)
+Completed 200 OK in 52ms (Views: 49.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2020-08-03 06:02:51 -0300
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1ofp4kTiWaKt9fEf9SoU6ZGkiEQ6GPgRBmQOYko8IVPKoLAqbvokhXBc746KY5sIrRAOYTW3RYKIRrXt5bhxuw==", "user"=>{"name"=>"Murilo", "email"=>"murilo@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "murilo@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "murilo@gmail.com"], ["encrypted_password", "$2a$11$cOFh3yGO26amUMAIJQYCH.8RZE/ORLPgrmHx3TjHpJqLcArfsoH3."], ["name", "Murilo"], ["created_at", "2020-08-03 09:02:51.831929"], ["updated_at", "2020-08-03 09:02:51.831929"], ["token", "MURI060251"]]
+  [1m[35m (157.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2020-08-03 09:02:51.992314"], ["last_sign_in_at", "2020-08-03 09:02:51.992314"], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["updated_at", "2020-08-03 09:02:51.994739"], ["id", 2]]
+  [1m[35m (284.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 584ms (ActiveRecord: 444.5ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 06:02:52 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.8ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 2], ["status", 2]]
+  Rendered messages/index.html.slim within layouts/application (8.7ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (15.1ms)
+  Rendered layouts/_messages.html.slim (2.3ms)
+  Rendered layouts/_navbar.html.slim (3.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.4ms)
+Completed 200 OK in 110ms (Views: 81.6ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/messages/new" for ::1 at 2020-08-03 06:02:56 -0300
+Processing by MessagesController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering messages/new.html.slim within layouts/application
+  Rendered messages/new.html.slim within layouts/application (6.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.2ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_navbar.html.slim (2.7ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.2ms)
+Completed 200 OK in 72ms (Views: 48.0ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/messages" for ::1 at 2020-08-03 06:03:11 -0300
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IP3C4Wy8lSnQq08Kr23JUab7h3jFbAInXn8FXCnRtoYH24EKAvYyuJMGGjMZ8oYgGOXGag5MngVy2MaYgsmzUA==", "message"=>{"receiver_email"=>"murilo@gmail.com", "title"=>"Assunto", "content"=>"COntepudo"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "murilo@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "messages" ("title", "content", "from", "to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Assunto"], ["content", "COntepudo"], ["from", 2], ["to", 2], ["created_at", "2020-08-03 09:03:11.543353"], ["updated_at", "2020-08-03 09:03:11.543353"]]
+  [1m[35m (231.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 272ms (ActiveRecord: 236.1ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 06:03:11 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 2], ["status", 2]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2[0m
+  Rendered messages/index.html.slim within layouts/application (16.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.0ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_navbar.html.slim (3.2ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.1ms)
+Completed 200 OK in 70ms (Views: 57.9ms | ActiveRecord: 2.9ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2020-08-03 06:03:14 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"WYmCFgRQh7MMCahNdbWBuk0esxbOHaLkl9ivHfCdt7oz7jWxodHeNhS1ZLh+2scaLmN+Rny3yZPnghG8sWEYLA=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 37ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-08-03 06:03:14 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (8.4ms)
+  Rendered layouts/_messages.html.slim (2.2ms)
+  Rendered layouts/_footer.html.slim (3.1ms)
+Completed 200 OK in 42ms (Views: 41.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-08-03 06:03:21 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CnXA9TxmYzqxvHTflPURvVtZGWZ8mSuFZK1IK5fjQt++hGmAZCgKOX1/1mXlisXZq7kfmeh0K+F3E61bMElWKw==", "user"=>{"email"=>"master@email.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", "2020-08-03 09:03:21.444118"], ["last_sign_in_at", "2020-08-03 09:03:21.444118"], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["sign_in_count", 1], ["updated_at", "2020-08-03 09:03:21.444886"], ["id", 1]]
+  [1m[35m (97.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 228ms (ActiveRecord: 99.2ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 06:03:21 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE ("messages"."status" != $1) ORDER BY created_at DESC[0m  [["status", 2]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2[0m
+  Rendered messages/index.html.slim within layouts/application (12.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (6.7ms)
+  Rendered layouts/_messages.html.slim (2.9ms)
+  Rendered layouts/_navbar.html.slim (3.5ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (2.3ms)
+Completed 200 OK in 72ms (Views: 58.7ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/users" for ::1 at 2020-08-03 06:03:31 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.slim within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered users/index.html.slim within layouts/application (6.1ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (7.3ms)
+  Rendered layouts/_messages.html.slim (3.5ms)
+  Rendered layouts/_navbar.html.slim (15.2ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (2.5ms)
+Completed 200 OK in 76ms (Views: 66.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/archived" for ::1 at 2020-08-03 06:03:33 -0300
+Processing by MessagesController#archived as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/archived.html.slim within layouts/application
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."status" = $1 ORDER BY created_at DESC[0m  [["status", 2]]
+  Rendered messages/archived.html.slim within layouts/application (11.2ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (7.1ms)
+  Rendered layouts/_messages.html.slim (2.2ms)
+  Rendered layouts/_navbar.html.slim (2.9ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (2.2ms)
+Completed 200 OK in 73ms (Views: 59.3ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users" for ::1 at 2020-08-03 06:03:34 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.slim within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered users/index.html.slim within layouts/application (12.0ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (6.6ms)
+  Rendered layouts/_messages.html.slim (2.6ms)
+  Rendered layouts/_navbar.html.slim (3.2ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (2.2ms)
+Completed 200 OK in 75ms (Views: 63.2ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 06:03:35 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE ("messages"."status" != $1) ORDER BY created_at DESC[0m  [["status", 2]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2[0m
+  Rendered messages/index.html.slim within layouts/application (16.1ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (7.7ms)
+  Rendered layouts/_messages.html.slim (3.5ms)
+  Rendered layouts/_navbar.html.slim (3.7ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (2.4ms)
+Completed 200 OK in 96ms (Views: 80.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/users" for ::1 at 2020-08-03 06:03:37 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.slim within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered users/index.html.slim within layouts/application (9.6ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (7.6ms)
+  Rendered layouts/_messages.html.slim (2.5ms)
+  Rendered layouts/_navbar.html.slim (3.1ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (2.1ms)
+Completed 200 OK in 72ms (Views: 57.9ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/users/2/messages" for ::1 at 2020-08-03 06:03:41 -0300
+Processing by UsersController#messages as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/messages.html.slim within layouts/application
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 2], ["status", 2]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2[0m
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["from", 2], ["status", 2]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered users/messages.html.slim within layouts/application (15.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (6.8ms)
+  Rendered layouts/_messages.html.slim (2.2ms)
+  Rendered layouts/_navbar.html.slim (3.8ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (2.5ms)
+Completed 200 OK in 84ms (Views: 62.5ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 06:03:45 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE ("messages"."status" != $1) ORDER BY created_at DESC[0m  [["status", 2]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2[0m
+  Rendered messages/index.html.slim within layouts/application (28.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (6.3ms)
+  Rendered layouts/_messages.html.slim (2.3ms)
+  Rendered layouts/_navbar.html.slim (2.8ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (2.0ms)
+Completed 200 OK in 80ms (Views: 71.1ms | ActiveRecord: 2.2ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2020-08-03 06:03:47 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ZLGYeGWfkdBjJIp1bEe7EP081TTHNwutXk6NehXbnkeRRJOm3j6Z0CVpMYW4cx8kpTq4C1sdEtwrO11S8pIzow=="}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 10ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-08-03 06:03:47 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (6.6ms)
+  Rendered layouts/_messages.html.slim (2.4ms)
+  Rendered layouts/_footer.html.slim (2.3ms)
+Completed 200 OK in 43ms (Views: 42.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-08-03 06:03:55 -0300
+Processing by Users::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/registrations/new.html.slim within layouts/login (15.7ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_footer.html.slim (2.5ms)
+Completed 200 OK in 55ms (Views: 52.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2020-08-03 06:04:05 -0300
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dVmSQHdA7b6lH0saa/WKs09RPfoH3P1n9JvKp5P0cJ+BlsGo31J4T9Q9C6gOiCOGimuqH6PYATC9ibWhhSqZ/Q==", "user"=>{"name"=>"Murilo", "email"=>"murilo2@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "murilo2@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "murilo2@gmail.com"], ["encrypted_password", "$2a$11$WMC7vqbgJZwdw3B/2tfy5eCQYw0PBOZdDTdBh0J6xYmSXencYlY.W"], ["name", "Murilo"], ["created_at", "2020-08-03 09:04:06.017337"], ["updated_at", "2020-08-03 09:04:06.017337"], ["token", "MURI060406"]]
+  [1m[35m (154.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2020-08-03 09:04:06.173931"], ["last_sign_in_at", "2020-08-03 09:04:06.173931"], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["updated_at", "2020-08-03 09:04:06.175553"], ["id", 3]]
+  [1m[35m (41.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 330ms (ActiveRecord: 197.6ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 06:04:06 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 3], ["status", 2]]
+  Rendered messages/index.html.slim within layouts/application (26.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 3], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 3], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.2ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_navbar.html.slim (4.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 3], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.3ms)
+Completed 200 OK in 88ms (Views: 76.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/messages/new" for ::1 at 2020-08-03 06:04:11 -0300
+Processing by MessagesController#new as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering messages/new.html.slim within layouts/application
+  Rendered messages/new.html.slim within layouts/application (15.9ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 3], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 3], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.3ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_navbar.html.slim (2.8ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 3], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.3ms)
+Completed 200 OK in 77ms (Views: 64.6ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/messages" for ::1 at 2020-08-03 06:04:24 -0300
+Processing by MessagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Hn7gfY1oFPZ2fxMXe78mpPlEqcUVtOK7IbCzRrGsF4efmLH0jzfXVg1JL9Rbi57/06oQ0EiEcSmJqpIbaCQUUw==", "message"=>{"receiver_email"=>"murilo@gmail.com", "title"=>"Assunto", "content"=>"Conteúdo"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "murilo@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("title", "content", "from", "to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Assunto"], ["content", "Conteúdo"], ["from", 3], ["to", 2], ["created_at", "2020-08-03 09:04:24.496395"], ["updated_at", "2020-08-03 09:04:24.496395"]]
+  [1m[35m (263.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 280ms (ActiveRecord: 265.9ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 06:04:24 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 3], ["status", 2]]
+  Rendered messages/index.html.slim within layouts/application (15.3ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 3], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 3], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (7.2ms)
+  Rendered layouts/_messages.html.slim (2.9ms)
+  Rendered layouts/_navbar.html.slim (3.5ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 3], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.4ms)
+Completed 200 OK in 90ms (Views: 77.2ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 06:04:32 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "MURI055328"], ["LIMIT", 1]]
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 7ms (Views: 0.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/3/edit" for ::1 at 2020-08-03 06:04:41 -0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/edit.html.slim within layouts/application
+  Rendered users/edit.html.slim within layouts/application (11.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 3], ["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 3], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.4ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_navbar.html.slim (3.6ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 3], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.3ms)
+Completed 200 OK in 70ms (Views: 60.0ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 06:04:51 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "MURI060406"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.8ms)[0m  [1m[34mSELECT "messages".* FROM "messages" ORDER BY created_at DESC[0m
+Completed 200 OK in 10ms (Views: 4.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 06:05:36 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "MURI060406"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1[0m  [["to", 3]]
+Completed 200 OK in 22ms (Views: 1.8ms | ActiveRecord: 5.1ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2020-08-03 06:05:44 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"BqgjKpRd9aN9sFgZNxwcEvC0Kp9eI6FJy0+I7dGjUrFEsj4QQbi9RkBZzpNdBAxySccncC8T9IkrDLevISxvWg=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 6ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-08-03 06:05:44 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (6.8ms)
+  Rendered layouts/_messages.html.slim (2.6ms)
+  Rendered layouts/_footer.html.slim (2.4ms)
+Completed 200 OK in 58ms (Views: 56.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-08-03 06:05:48 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hdwFyAqr7OzBI89wsEDxZvVNEkaEGU+Pa/QSnJ9SfFIT6RE3U+aYEW1Gis4x6L/T14NggvdPVdCzohr7mHb9Sw==", "user"=>{"email"=>"murilo@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "murilo@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["current_sign_in_at", "2020-08-03 09:05:49.080113"], ["sign_in_count", 2], ["updated_at", "2020-08-03 09:05:49.081101"], ["id", 2]]
+  [1m[35m (170.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 308ms (ActiveRecord: 172.3ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 06:05:49 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 2], ["status", 2]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (3, 2)[0m
+  Rendered messages/index.html.slim within layouts/application (22.7ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (6.0ms)
+  Rendered layouts/_messages.html.slim (2.5ms)
+  Rendered layouts/_navbar.html.slim (3.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.1ms)
+Completed 200 OK in 76ms (Views: 60.1ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/users/2/edit" for ::1 at 2020-08-03 06:05:56 -0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/edit.html.slim within layouts/application
+  Rendered users/edit.html.slim within layouts/application (10.6ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (8.1ms)
+  Rendered layouts/_messages.html.slim (2.3ms)
+  Rendered layouts/_navbar.html.slim (17.3ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.7ms)
+Completed 200 OK in 77ms (Views: 69.0ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 06:06:04 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "MURI060251"], ["LIMIT", 1]]
+  [1m[36mMessage Load (1.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1[0m  [["to", 2]]
+Completed 200 OK in 11ms (Views: 4.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 06:06:15 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "MURI060406"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1[0m  [["to", 3]]
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 06:06:24 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI052952"], ["LIMIT", 1]]
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2020-08-03 06:06:27 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Yd4TJb0E9TcnKeZf/4DfntvMBCHVeqkmDMzP7N1u1IqhrF6UMUrpkcc7uJQ9cpab72W5YnY0LBHVXodfbew2cA=="}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 11ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-08-03 06:06:27 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (6.9ms)
+  Rendered layouts/_messages.html.slim (2.6ms)
+  Rendered layouts/_footer.html.slim (2.4ms)
+Completed 200 OK in 44ms (Views: 42.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-08-03 06:06:36 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fbX4YxmPEfexNjRLRCadb3W6dB8ynGP4O2kHaGTTZ7XLtBfnieMJACrAT3wox2RsM7kNaGSP4PHZK57oGCnsmQ==", "user"=>{"email"=>"master@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "master@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 8ms (ActiveRecord: 1.3ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fbX4YxmPEfexNjRLRCadb3W6dB8ynGP4O2kHaGTTZ7XLtBfnieMJACrAT3wox2RsM7kNaGSP4PHZK57oGCnsmQ==", "user"=>{"email"=>"master@gmail.com", "password"=>"[FILTERED]"}}
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.6ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (4.4ms)
+  Rendered layouts/_messages.html.slim (1.8ms)
+  Rendered layouts/_footer.html.slim (1.9ms)
+Completed 200 OK in 148ms (Views: 28.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-08-03 06:06:42 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gFaD/mOiOVQsUqhdfyDp5HMmRVCQNBMlyELe17fVa+s2V2x6884ho7ek02oTwRDnNSU8J8YnkCwqAEdXyy/gxw==", "user"=>{"email"=>"master@email.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["current_sign_in_at", "2020-08-03 09:06:42.315797"], ["sign_in_count", 2], ["updated_at", "2020-08-03 09:06:42.316548"], ["id", 1]]
+  [1m[35m (24.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 155ms (ActiveRecord: 25.3ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 06:06:42 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE ("messages"."status" != $1) ORDER BY created_at DESC[0m  [["status", 2]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (3, 2)[0m
+  Rendered messages/index.html.slim within layouts/application (9.6ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (8.8ms)
+  Rendered layouts/_messages.html.slim (2.4ms)
+  Rendered layouts/_navbar.html.slim (3.2ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (2.5ms)
+Completed 200 OK in 74ms (Views: 64.4ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/users/1/edit" for ::1 at 2020-08-03 06:06:45 -0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/edit.html.slim within layouts/application
+  Rendered users/edit.html.slim within layouts/application (18.4ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (7.9ms)
+  Rendered layouts/_messages.html.slim (2.7ms)
+  Rendered layouts/_navbar.html.slim (3.3ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (2.3ms)
+Completed 200 OK in 86ms (Views: 70.5ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/users/1/edit" for ::1 at 2020-08-03 06:06:48 -0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/edit.html.slim within layouts/application
+  Rendered users/edit.html.slim within layouts/application (18.0ms)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (8.7ms)
+  Rendered layouts/_messages.html.slim (2.5ms)
+  Rendered layouts/_navbar.html.slim (16.3ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (2.8ms)
+Completed 200 OK in 96ms (Views: 79.4ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users" for ::1 at 2020-08-03 06:06:50 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.slim within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered users/index.html.slim within layouts/application (9.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (7.8ms)
+  Rendered layouts/_messages.html.slim (2.3ms)
+  Rendered layouts/_navbar.html.slim (3.1ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (2.3ms)
+Completed 200 OK in 73ms (Views: 59.4ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/archived" for ::1 at 2020-08-03 06:06:51 -0300
+Processing by MessagesController#archived as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/archived.html.slim within layouts/application
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."status" = $1 ORDER BY created_at DESC[0m  [["status", 2]]
+  Rendered messages/archived.html.slim within layouts/application (8.0ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (6.9ms)
+  Rendered layouts/_messages.html.slim (2.7ms)
+  Rendered layouts/_navbar.html.slim (3.4ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (2.3ms)
+Completed 200 OK in 65ms (Views: 54.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 06:06:51 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE ("messages"."status" != $1) ORDER BY created_at DESC[0m  [["status", 2]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (3, 2)[0m
+  Rendered messages/index.html.slim within layouts/application (12.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (7.5ms)
+  Rendered layouts/_messages.html.slim (2.6ms)
+  Rendered layouts/_navbar.html.slim (3.9ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (2.3ms)
+Completed 200 OK in 90ms (Views: 77.7ms | ActiveRecord: 3.3ms)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 06:07:16 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI060220"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (2, 3)[0m
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 1.0ms)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (862.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "agenda_mail_development"[0m
+  [1m[35m (659.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "agenda_mail_test"[0m
+  [1m[35m (1414.3ms)[0m  [1m[35mCREATE DATABASE "agenda_mail_development" ENCODING = 'unicode'[0m
+  [1m[35m (1310.0ms)[0m  [1m[35mCREATE DATABASE "agenda_mail_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages" CASCADE[0m
+  [1m[35m (621.9ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "title" character varying NOT NULL, "content" text NOT NULL, "from" integer NOT NULL, "to" integer NOT NULL, "visualized" timestamp, "status" integer DEFAULT 0 NOT NULL, "archived" timestamp, "response" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (172.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "permission" integer DEFAULT 0, "token" character varying)[0m
+  [1m[35m (141.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (129.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (517.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (30.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171217223300)[0m
+  [1m[35m (24.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20171214205408),
+(20171215174246),
+(20171217044233);
+
+[0m
+  [1m[35m (403.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-03 09:10:12.044295"], ["updated_at", "2020-08-03 09:10:12.044295"]]
+  [1m[35m (32.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages" CASCADE[0m
+  [1m[35m (256.6ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "title" character varying NOT NULL, "content" text NOT NULL, "from" integer NOT NULL, "to" integer NOT NULL, "visualized" timestamp, "status" integer DEFAULT 0 NOT NULL, "archived" timestamp, "response" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (411.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "permission" integer DEFAULT 0, "token" character varying)[0m
+  [1m[35m (116.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (130.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (357.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (31.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171217223300)[0m
+  [1m[35m (24.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20171214205408),
+(20171215174246),
+(20171217044233);
+
+[0m
+  [1m[35m (517.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-03 09:10:14.025010"], ["updated_at", "2020-08-03 09:10:14.025010"]]
+  [1m[35m (23.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "created_at", "updated_at", "permission", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "master@email.com"], ["encrypted_password", "$2a$11$FlB/nmKaAqL7A9eV0ZXb9ux/EuCIpnG8QY/IecMsvss0Fgxc/KngS"], ["name", "Admin"], ["created_at", "2020-08-03 09:10:14.228652"], ["updated_at", "2020-08-03 09:10:14.228652"], ["permission", 1], ["token", "ADMI123456"]]
+  [1m[35m (27.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (64.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages" CASCADE[0m
+  [1m[35m (485.0ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "title" character varying NOT NULL, "content" text NOT NULL, "from" integer NOT NULL, "to" integer NOT NULL, "visualized" timestamp, "status" integer DEFAULT 0 NOT NULL, "archived" timestamp, "response" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (50.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (642.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "permission" integer DEFAULT 0, "token" character varying)[0m
+  [1m[35m (267.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (233.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (25.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "messages" CASCADE[0m
+  [1m[35m (517.6ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "title" character varying NOT NULL, "content" text NOT NULL, "from" integer NOT NULL, "to" integer NOT NULL, "visualized" timestamp, "status" integer DEFAULT 0 NOT NULL, "archived" timestamp, "response" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (35.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (549.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "permission" integer DEFAULT 0, "token" character varying)[0m
+  [1m[35m (322.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (244.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "created_at", "updated_at", "permission", "token") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "master@email.com"], ["encrypted_password", "$2a$11$fL9zJGKLp9PRsX5Neq.P.eXcpwKKqWy9mEsCqQCSnvNilUaDa9PBW"], ["name", "Admin"], ["created_at", "2020-08-03 09:10:28.975835"], ["updated_at", "2020-08-03 09:10:28.975835"], ["permission", 1], ["token", "ADMI123456"]]
+  [1m[35m (27.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2020-08-03 06:10:36 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.7ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (588.2ms)
+  Rendered layouts/_messages.html.slim (2.0ms)
+  Rendered layouts/_footer.html.slim (2.1ms)
+Completed 200 OK in 843ms (Views: 810.4ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-08-03 06:10:39 -0300
+Processing by Users::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/registrations/new.html.slim within layouts/login (11.4ms)
+  Rendered layouts/_messages.html.slim (2.1ms)
+  Rendered layouts/_footer.html.slim (2.0ms)
+Completed 200 OK in 43ms (Views: 42.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2020-08-03 06:10:47 -0300
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ONXszDdRNA4fTO6a4OQuk4XW24aAajAp38rqp8Z3Ivz/gKc4GkuPFto0AGpvvMju2QKE0mLPNOJOAOQDtmOpwA==", "user"=>{"name"=>"Murilo Roque", "email"=>"murilo@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "murilo@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "created_at", "updated_at", "token") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "murilo@gmail.com"], ["encrypted_password", "$2a$11$kbWVbXSE0X10oQUG6sI7suRrqIqKr4U2JXrLUa52Jnsyp73.vukJ."], ["name", "Murilo Roque"], ["created_at", "2020-08-03 09:10:47.802416"], ["updated_at", "2020-08-03 09:10:47.802416"], ["token", "MURI061047"]]
+  [1m[35m (107.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2020-08-03 09:10:47.912688"], ["last_sign_in_at", "2020-08-03 09:10:47.912688"], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["updated_at", "2020-08-03 09:10:47.915036"], ["id", 2]]
+  [1m[35m (212.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 465ms (ActiveRecord: 322.5ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 06:10:48 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.7ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."to" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["to", 2], ["status", 2]]
+  Rendered messages/index.html.slim within layouts/application (8.2ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (15.9ms)
+  Rendered layouts/_messages.html.slim (2.3ms)
+  Rendered layouts/_navbar.html.slim (3.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.8ms)
+Completed 200 OK in 104ms (Views: 81.5ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/users/2/edit" for ::1 at 2020-08-03 06:10:56 -0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/edit.html.slim within layouts/application
+  Rendered users/edit.html.slim within layouts/application (10.5ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2)[0m  [["from", 2], ["status", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_sidebar.html.slim (7.2ms)
+  Rendered layouts/_messages.html.slim (2.5ms)
+  Rendered layouts/_navbar.html.slim (3.1ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."to" = $1 AND "messages"."status" = $2[0m  [["to", 2], ["status", 0]]
+  Rendered layouts/_footer.html.slim (2.1ms)
+Completed 200 OK in 67ms (Views: 54.7ms | ActiveRecord: 2.6ms)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/api/v1/messages" for 127.0.0.1 at 2020-08-03 06:23:40 -0300
+Processing by Api::V1::MessagesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI123456"], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/messages" for ::1 at 2020-08-03 06:25:02 -0300
+Processing by Api::V1::MessagesController#index as HTML
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+

@@ -11,6 +11,7 @@ FactoryBot.define do
 
     trait :master do
       permission 1
+      token 'ADMI123456'
     end
   end
 end
