@@ -2,10 +2,10 @@ module Api::V1
   class ApiController < ApplicationController
     include ActionController::HttpAuthentication::Token::ControllerMethods
     before_action :authenticate
+    skip_before_action :verify_authenticity_token
 
     protected
 
-    # Authenticate the user with token based authentication
     def authenticate
       authenticate_token || render_unauthorized
     end

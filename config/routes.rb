@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get '/messages/sent' => 'messages#sent'
-      resources :messages, only: [:index, :show, :create, :destroy]
+      resources :messages, only: [:index, :show, :create]
     end
   end
 

@@ -3074,3 +3074,212 @@ No template found for Api::V1::MessagesController#show, rendering head :no_conte
 Completed 204 No Content in 40ms (ActiveRecord: 1.7ms)
 
 
+Started GET "/api/v1/messages/sent" for 127.0.0.1 at 2020-08-03 11:14:33 -0300
+  [1m[35m (48.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::MessagesController#sent as */*
+  [1m[36mUser Load (25.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "MURI061047"], ["LIMIT", 1]]
+  [1m[36mMessage Load (25.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."from" = $1 AND ("messages"."status" != $2) ORDER BY created_at DESC[0m  [["from", 2], ["status", 2]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (2, 1)[0m
+Completed 200 OK in 272ms (Views: 72.2ms | ActiveRecord: 106.8ms)
+
+
+Started POST "/api/v1/messages" for 127.0.0.1 at 2020-08-03 11:18:43 -0300
+Processing by Api::V1::MessagesController#create as */*
+  Parameters: {"message"=>{"receiver_email"=>"murilo@gmail.com", "title"=>"APITEST", "content"=>"CONTEUDO"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/v1/messages" for 127.0.0.1 at 2020-08-03 11:21:51 -0300
+Processing by Api::V1::MessagesController#create as */*
+  Parameters: {"message"=>{"receiver_email"=>"murilo@gmail.com", "title"=>"APITEST", "content"=>"CONTEUDO"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/v1/messages" for 127.0.0.1 at 2020-08-03 11:23:57 -0300
+Processing by Api::V1::MessagesController#create as */*
+  Parameters: {"message"=>{"receiver_email"=>"murilo@gmail.com", "title"=>"APITEST", "content"=>"CONTEUDO"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/v1/messages" for 127.0.0.1 at 2020-08-03 11:24:47 -0300
+Processing by Api::V1::MessagesController#create as */*
+  Parameters: {"message"=>{"receiver_email"=>"murilo@gmail.com", "title"=>"APITEST", "content"=>"CONTEUDO"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/v1/messages" for 127.0.0.1 at 2020-08-03 11:25:33 -0300
+Processing by Api::V1::MessagesController#create as */*
+  Parameters: {"message"=>{"receiver_email"=>"master@email.com", "title"=>"APITEST", "content"=>"CONTEUDO"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/v1/messages" for 127.0.0.1 at 2020-08-03 11:26:21 -0300
+Processing by Api::V1::MessagesController#create as */*
+  Parameters: {"message"=>{"receiver_email"=>"master@email.com", "title"=>"APITEST", "content"=>"CONTEUDO"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started DELETE "/users/sign_out" for ::1 at 2020-08-03 11:26:27 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Dm/U2ZkGcbacn+8AMPp+39IyMqIcO88/lkks2f+co7ozmUAVxQifUvNCwvd1pakk2SkzX2MsOz2ahschAc0MOA=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 1074ms (ActiveRecord: 4.7ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-08-03 11:26:28 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (3.7ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (154.2ms)
+  Rendered layouts/_messages.html.slim (3.1ms)
+  Rendered layouts/_footer.html.slim (3.1ms)
+Completed 200 OK in 1390ms (Views: 1347.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-08-03 11:26:39 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gmdkv+gjIuJWpZi/7oZfSqr8POMkuqj6ryzDPQJOvqu+PVvA6Ym0IwmwnZc6Ccyk4y3BZvR/SwG7UIw2B27UfQ==", "user"=>{"email"=>"master@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "master@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 54ms (ActiveRecord: 1.6ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gmdkv+gjIuJWpZi/7oZfSqr8POMkuqj6ryzDPQJOvqu+PVvA6Ym0IwmwnZc6Ccyk4y3BZvR/SwG7UIw2B27UfQ==", "user"=>{"email"=>"master@gmail.com", "password"=>"[FILTERED]"}}
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (4.3ms)
+  Rendered layouts/_messages.html.slim (2.2ms)
+  Rendered layouts/_footer.html.slim (2.5ms)
+Completed 200 OK in 429ms (Views: 30.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-08-03 11:26:45 -0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"14ImiGyk8WDaPYHHDq8iGWG+J6jKkaDw4Fa3i0gESVHr2Bn3bQ5noYUohO/aILH3KG/aLRpUQwv0KviATSQjhw==", "user"=>{"email"=>"master@email.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", "2020-08-03 14:26:46.034049"], ["last_sign_in_at", "2020-08-03 14:26:46.034049"], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["sign_in_count", 1], ["updated_at", "2020-08-03 14:26:46.034655"], ["id", 1]]
+  [1m[35m (34.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/messages
+Completed 302 Found in 207ms (ActiveRecord: 35.7ms)
+
+
+Started GET "/messages" for ::1 at 2020-08-03 11:26:46 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE ("messages"."status" != $1) ORDER BY created_at DESC[0m  [["status", 2]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2[0m
+  Rendered messages/index.html.slim within layouts/application (21.3ms)
+  [1m[35m (55.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (66.7ms)
+  Rendered layouts/_messages.html.slim (8.8ms)
+  Rendered layouts/_navbar.html.slim (8.6ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (3.4ms)
+Completed 200 OK in 186ms (Views: 80.9ms | ActiveRecord: 62.4ms)
+
+
+Started POST "/api/v1/messages" for 127.0.0.1 at 2020-08-03 11:26:49 -0300
+Processing by Api::V1::MessagesController#create as */*
+  Parameters: {"message"=>{"receiver_email"=>"master@email.com", "title"=>"APITEST", "content"=>"CONTEUDO"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/api/v1/messages" for 127.0.0.1 at 2020-08-03 11:29:04 -0300
+Processing by Api::V1::MessagesController#create as */*
+  Parameters: {"message"=>{"receiver_email"=>"master@email.com", "title"=>"APITEST", "content"=>"CONTEUDO"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI123456"], ["LIMIT", 1]]
+Can't verify CSRF token authenticity.
+Completed 500 Internal Server Error in 88ms (ActiveRecord: 3.3ms)
+
+
+
+NameError - undefined local variable or method `message_params' for #<Api::V1::MessagesController:0x00007faa840eb2e0>:
+  app/controllers/api/v1/messages_controller.rb:21:in `create'
+
+Started POST "/api/v1/messages" for 127.0.0.1 at 2020-08-03 11:30:03 -0300
+Processing by Api::V1::MessagesController#create as */*
+  Parameters: {"message"=>{"receiver_email"=>"master@email.com", "title"=>"APITEST", "content"=>"CONTEUDO"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI123456"], ["LIMIT", 1]]
+Can't verify CSRF token authenticity.
+Completed 500 Internal Server Error in 157ms (ActiveRecord: 0.3ms)
+
+
+
+NameError - undefined local variable or method `message_params' for #<Api::V1::MessagesController:0x00007faa84151590>:
+  app/controllers/api/v1/messages_controller.rb:21:in `create'
+
+Started POST "/api/v1/messages" for 127.0.0.1 at 2020-08-03 11:31:01 -0300
+Processing by Api::V1::MessagesController#create as */*
+  Parameters: {"message"=>{"receiver_email"=>"master@email.com", "title"=>"APITEST", "content"=>"CONTEUDO"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI123456"], ["LIMIT", 1]]
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 3.6ms)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/controllers/api/v1/messages_controller.rb:22:in `create'
+
+Started POST "/api/v1/messages" for 127.0.0.1 at 2020-08-03 11:36:11 -0300
+Processing by Api::V1::MessagesController#create as */*
+  Parameters: {"message"=>{"receiver_email"=>"master@email.com", "title"=>"APITEST", "content"=>"CONTEUDO"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI123456"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (61.3ms)[0m  [1m[32mINSERT INTO "messages" ("title", "content", "from", "to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "APITEST"], ["content", "CONTEUDO"], ["from", 1], ["to", 1], ["created_at", "2020-08-03 14:36:11.538178"], ["updated_at", "2020-08-03 14:36:11.538178"]]
+  [1m[35m (50.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 241ms (Views: 2.0ms | ActiveRecord: 118.9ms)
+
+
+Started POST "/api/v1/messages" for 127.0.0.1 at 2020-08-03 13:26:58 -0300
+Processing by Api::V1::MessagesController#create as */*
+  Parameters: {"message"=>{"receiver_email"=>"master@email.com", "title"=>"APITEST", "content"=>"CONTEUDO"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI123456"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("title", "content", "from", "to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "APITEST"], ["content", "CONTEUDO"], ["from", 1], ["to", 1], ["created_at", "2020-08-03 16:26:58.903179"], ["updated_at", "2020-08-03 16:26:58.903179"]]
+  [1m[35m (51.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 83ms (Views: 0.7ms | ActiveRecord: 58.3ms)
+
+
