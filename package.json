@@ -1,0 +1,8 @@
+{
+  "name": "agenda_mail",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "stylelint-csstree-validator": "^1.8.0"
+  }
+}

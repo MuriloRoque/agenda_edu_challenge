@@ -1,0 +1,145 @@
+pt-BR:
+  date:
+    abbr_day_names:
+    - Dom
+    - Seg
+    - Ter
+    - Qua
+    - Qui
+    - Sex
+    - Sáb
+    abbr_month_names:
+      -
+      - Janeiro
+      - Fevereiro
+      - Março
+      - Abril
+      - Maio
+      - Junho
+      - Julho
+      - Agosto
+      - Setembro
+      - Outubro
+      - Novembro
+      - Dezembro
+    day_names:
+    - Domingo
+    - Segunda
+    - Terça
+    - Quarta
+    - Quinta
+    - Sexta
+    - Sábado
+    month_names:
+      January: Janeiro
+      February: Fevereiro
+      March: Março
+      April: Abril
+      May: Maio
+      June: Junho
+      July: Julho
+      August: Agosto
+      September: Setembro
+      October: Outubro
+      November: Novembro
+      December: Dezembro
+    month_names_number:
+      01: Janeiro
+      02: Fevereiro
+      03: Março
+      04: Abril
+      05: Maio
+      06: Junho
+      07: Julho
+      08: Agosto
+      09: Setembro
+      10: Outubro
+      11: Novembro
+      12: Dezembro
+
+
+  activerecord:
+    models:
+      avaliation: Avaliação
+      user: Usuário
+      analyst: Analista
+      consultation: Consulta
+      contribution: Contribuição
+      question: Questão
+      choice: Escolha
+      answer: Resposta
+      administrator: Administrador
+      allocation: Alocação
+
+    attributes:
+      avaliation:
+        grade: Nota
+        approve: Aprova
+        justification: Justificativa
+        boolean:
+          "true": "Sim"
+          'false': 'Não'
+
+      user:
+        name: Nome
+        email: E-mail
+        cellphone: Celular
+        identity: Identidade
+
+      analyst:
+        name: Nome
+        email: E-mail
+
+      consultation:
+        name: Nome
+        briefing: Resumo
+        description: Descrição
+        start_date: Data de Inicio
+        end_date: Data de Término
+        status: Status
+        identifier: Identificador
+        enums:
+          status:
+            unpublished: Não Publicada
+            open: Aberta
+            closed: Encerrada
+
+      contribution:
+        status: Status
+        protocol: Protocolo
+        enums:
+          status:
+            pending: Pendente
+            approved: Aprovada
+            rejected: Rejeitada
+      question:
+        title: Título
+        question_type: Tipo de questão
+
+      choice:
+        text: Texto
+
+      answer:
+        text: Texto
+        answer_type: Tipo de resposta
+
+      administrator:
+        name: Nome
+        email: E-mail
+
+
+# devise/sessions/new
+  sign_in: Entrar no Participar
+  enter: Entrar
+  filter: Filtrar
+# devise/shared/links
+  forgot_password: Esqueceu a senha?
+
+# devise/passwords/new
+  send_instructions: Envie-me instruções
+
+# devise/passwords/edit
+  change_password: Mudar senha
+  new_password: Nova senha
+  new_password_confirmation: Confirme nova senha
+

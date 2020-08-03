@@ -1,0 +1,12 @@
+$.each($('.messages_ids:checkbox:checked'),function(){
+  $(this).parent().parent().remove()
+  var count = 0;
+  if ($(this).parent().parent().hasClass('unread')){
+    count = count + 1;
+  }
+  $('.content').first().data('unread',$('.content').first().data('unread') - count)
+  $('#unread_messages').text('Mensagens (' + $('.content').first().data('unread') + ')')
+
+  $('.content').first().data('archived',$('.content').first().data('archived') + 1)
+  $('#archived_messages').text('Mensagens (' + $('.content').first().data('archived') + ')')
+});

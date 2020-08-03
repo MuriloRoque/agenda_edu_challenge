@@ -1,0 +1,26 @@
+.container-fluid#login
+  .row
+    .col-lg-5.col-lg-offset-4.col-md-7.col-md-offset-4
+      .card
+        .header
+          h4.title AgendaMail
+          p.category Acesse sua conta.
+        .content.table-responsive.table-full-width
+          = form_for(resource, :as => resource_name, :url =>  session_path(resource_name)) do |f|
+            .row
+              .col-md-11
+                .form-group.login_input
+                  = f.label :email
+                  = f.text_field :email, class: 'form-control border-input', placeholder: 'Email', autofocus: true
+            .row
+              .col-md-11
+                .form-group.login_input
+                  = f.label 'Senha'
+                  = f.password_field :password, class: 'form-control border-input', placeholder: 'Senha'
+            .row
+              .col-md-11
+                .form-group.login_input
+                  = render "devise/shared/links"
+            .text-center
+              button.btn.btn-info.btn-fill.btn-wd type="submit"  Entrar
+

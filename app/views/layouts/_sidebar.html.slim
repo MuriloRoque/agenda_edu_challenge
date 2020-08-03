@@ -1,0 +1,31 @@
+.sidebar data-active-color="danger" data-background-color="white"
+  .sidebar-wrapper
+    .logo
+      a.simple-text href="/messages"
+        | AgendaMail
+      span #{current_user.name}
+    ul.nav
+      - unless current_user.master?
+        li class="#{ active?(new_message_path)} hide_sidebar"
+          a href="/messages/new"
+            i.fa.fa-pencil
+            p Escrever
+        li class="#{ active?(sent_messages_path)} hide_sidebar"
+          a href="/messages/sent"
+            i.fa.fa-envelope-open
+            p Enviadas (#{current_user.messages_sent.size})
+      li class="#{ active?(messages_path)} hide_sidebar"
+        a href="/messages"
+          i.fa.fa-envelope-o
+          p#unread_messages Mensagens (#{user_messages})
+      - if current_user.master?
+        li class="#{ active?(archived_path)} hide_sidebar"
+          a href="/archived"
+            i.fa.fa-archive
+            p#archived_messages Arquivadas (#{archived_count})
+        li class="#{ active?(users_path)} hide_sidebar"
+          a href="/users"
+            i.fa.fa-user
+            p Usuários (#{users_count})
+
+

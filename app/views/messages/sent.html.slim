@@ -1,0 +1,21 @@
+.container-fluid
+  .row
+    .col-md-12
+      .card
+        .header
+          h4.title Caixa de Entrada
+          span.message_date
+        .content.table-responsive.table-full-width
+          table.table
+            thead
+              th
+              th
+              th
+            tbody
+              - @messages.each do |message|
+                tr.clickable class="#{'unread' if message.unread?}"
+                  td #{message.receiver_name}
+                  td.message_content
+                    = link_to message.title, message_path(message), class: 'view_message'
+                  td #{message_date(message)}
+

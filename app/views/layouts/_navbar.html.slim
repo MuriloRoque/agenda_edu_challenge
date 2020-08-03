@@ -1,0 +1,21 @@
+nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar.bar1
+        span.icon-bar.bar2
+        span.icon-bar.bar3
+      a.navbar-brand href="#"  Mensagens
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li.dropdown
+          a.dropdown-toggle data-toggle="dropdown" href="#"
+            i.fa.fa-gear
+            p Opções
+            b.caret
+          ul.dropdown-menu
+            li
+              = link_to 'Perfil', edit_user_path(current_user)
+            li
+              = link_to 'Sair', destroy_user_session_path, method: :delete
