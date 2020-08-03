@@ -3300,3 +3300,56 @@ Completed 200 OK in 69ms (Views: 1.4ms | ActiveRecord: 55.6ms)
 
 
   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/messages" for ::1 at 2020-08-03 14:27:53 -0300
+Processing by MessagesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering messages/index.html.slim within layouts/application
+  [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE ("messages"."status" != $1) ORDER BY created_at DESC[0m  [["status", 2]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (1, 2)[0m
+  Rendered messages/index.html.slim within layouts/application (15.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."permission" = $1[0m  [["permission", 0]]
+  Rendered layouts/_sidebar.html.slim (6.4ms)
+  Rendered layouts/_messages.html.slim (1.9ms)
+  Rendered layouts/_navbar.html.slim (2.6ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."status" = $1[0m  [["status", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE ("messages"."status" != $1)[0m  [["status", 2]]
+  Rendered layouts/_footer.html.slim (1.9ms)
+Completed 200 OK in 71ms (Views: 48.3ms | ActiveRecord: 7.2ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2020-08-03 14:27:58 -0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Vyc+jX0uSVA7XhNtpjcl++lfu92FoJIm29X1J2YAX1N0yPqKhI1j/ziolnRxke8abwznEo0+BE+yvIqfP41x5g=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-08-03 14:27:58 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.slim within layouts/login
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/sessions/new.html.slim within layouts/login (7.4ms)
+  Rendered layouts/_messages.html.slim (2.0ms)
+  Rendered layouts/_footer.html.slim (2.0ms)
+Completed 200 OK in 36ms (Views: 34.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/messages" for 127.0.0.1 at 2020-08-03 15:17:50 -0300
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::MessagesController#create as */*
+  Parameters: {"message"=>{"receiver_email"=>"master@email.com", "title"=>"APITEST", "content"=>"CONTEUDO"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI123456"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "master@email.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("title", "content", "from", "to", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "APITEST"], ["content", "CONTEUDO"], ["from", 1], ["to", 1], ["created_at", "2020-08-03 18:17:50.728275"], ["updated_at", "2020-08-03 18:17:50.728275"]]
+  [1m[35m (51.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 104ms (Views: 2.2ms | ActiveRecord: 58.1ms)
+
+
