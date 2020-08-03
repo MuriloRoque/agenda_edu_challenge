@@ -24,5 +24,7 @@ module AgendaMail
         resource '*', :headers => :any, :methods => [:get, :post, :patch, :options]
       end
     end
+
+    config.middleware.use Rack::Attack
   end
 end
