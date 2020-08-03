@@ -3289,3 +3289,14 @@ Processing by Api::V1::UsersController#profile as */*
 Completed 200 OK in 15ms (Views: 0.5ms | ActiveRecord: 3.3ms)
 
 
+Started PATCH "/api/v1/profile?user[name]=Murilo" for 127.0.0.1 at 2020-08-03 14:22:10 -0300
+Processing by Api::V1::UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"Murilo"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "ADMI123456"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["name", "Murilo"], ["updated_at", "2020-08-03 17:22:10.352532"], ["id", 1]]
+  [1m[35m (52.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 69ms (Views: 1.4ms | ActiveRecord: 55.6ms)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
